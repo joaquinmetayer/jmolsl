@@ -3,7 +3,6 @@ import { createContext, useState, useEffect } from "react";
 export const Context = createContext();
 
 export function ContextProvider(props) {
-
   const [tasks, setTasks] = useState(
     JSON.parse(localStorage.getItem("tasks") || "[]")
   );
@@ -24,7 +23,6 @@ export function ContextProvider(props) {
 
   useEffect((e) => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
-
   }, []);
 
   document.title = "local storage list";
