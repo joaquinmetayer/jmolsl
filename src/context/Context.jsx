@@ -4,8 +4,10 @@ export const Context = createContext();
 
 export function ContextProvider(props) {
   const [tasks, setTasks] = useState(
+    // get JSON, if dont have tasks set this with []
     JSON.parse(localStorage.getItem("tasks") || "[]")
   );
+  // upload to local storage the tasks
   localStorage.setItem("tasks", JSON.stringify(tasks));
 
   function createTask(task) {
@@ -22,6 +24,7 @@ export function ContextProvider(props) {
   }
 
   useEffect((e) => {
+    // save JSON every effect on app
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, []);
 
